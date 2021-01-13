@@ -300,52 +300,59 @@ int Check(int arr[])  {
 void main(){
 	srand(time(0));
 	const int size = 9;
+	int d, x, v = 1;
+	while (v == 1) {
 	int choice = 0;
 	int turn = 0;
 	int arr[size] = { 0, 0, 0,
 					  0, 0, 0,
 				      0, 0, 0};
 	int win = 0;
-	int d,x;
-	cout << "Choose symbol:" << endl;
-	cout << "1 - X" << endl;
-	cout << "2 - O" << endl;
-	cin >> d;
-	if (d == 1) {
-		d = 88;
-		x = 79;
-	}
-	else { 
-		d = 79;
-		x = 88;
-	}
-	while (win == 0) {
-		system("cls");
-		board(arr, d, x);
-		cout << endl;
-		if (turn == 0) turn += rand() % 2;
-		if (turn % 2 == 0) {
-			cout << "\t\t\t\t\t\t" <<  "Player Turn" << endl;
-			cout << "\t\t\t\t\t" <<  "Choose place of the symbol:"; cin >> choice;
-			arr[choice-1] = 2;
-			turn++;
+		cout << "Choose symbol:" << endl;
+		cout << "1 - X" << endl;
+		cout << "2 - O" << endl;
+		cin >> d;
+		if (d == 1) {
+			d = 88;
+			x = 79;
 		}
 		else {
-			choice = AI(arr);
-			arr[choice] = 1;
-			turn++;
+			d = 79;
+			x = 88;
 		}
-		win = Check(arr);
-	}
-	system("cls");
-	board(arr, d, x);
-	if (win == 2) {
-		cout << "\n\n\t\t\t\t\t\t" << char(60) << "Player Wins" << char(62) << "\n\n";
-	}
-	else if (win == 1){
-		cout << "\n\n\t\t\t\t\t\t" << char(60) << "Computer Wins" << char(62) << "\n\n";
-	}
-	else if (win == 3) {
-		cout << "\n\n\t\t\t\t\t\t" << char(60) << "DRAW" << char(62) << "\n\n";
+		while (win == 0) {
+			system("cls");
+			board(arr, d, x);
+			cout << endl;
+			if (turn == 0) turn += rand() % 2;
+			if (turn % 2 == 0) {
+				cout << "\t\t\t\t\t\t" << "Player Turn" << endl;
+				cout << "\t\t\t\t\t" << "Choose place of the symbol:"; cin >> choice;
+				arr[choice - 1] = 2;
+				turn++;
+			}
+			else {
+				choice = AI(arr);
+				arr[choice] = 1;
+				turn++;
+			}
+			win = Check(arr);
+		}
+		system("cls");
+		board(arr, d, x);
+		if (win == 2) {
+			cout << "\n\n\t\t\t\t\t\t" << char(60) << "Player Wins" << char(62) << "\n\n";
+		}
+		else if (win == 1) {
+			cout << "\n\n\t\t\t\t\t\t" << char(60) << "Computer Wins" << char(62) << "\n\n";
+		}
+		else if (win == 3) {
+			cout << "\n\n\t\t\t\t\t\t" << char(60) << "DRAW" << char(62) << "\n\n";
+		}
+		cout << "Another game?" << endl;
+		cout << "1 - Yes" << endl;
+		cout << "2 - No" << endl;
+		cin >> v;
+		system("cls");
 	}
 }
