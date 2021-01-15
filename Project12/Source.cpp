@@ -46,6 +46,7 @@ void board(int arr[], int d,int x) {
 int AI(int arr[]) {
 	int temp;
 	bool check = 0;
+
 	if (arr[0] == 1) {
 		if (arr[1] == 1 and arr[2] == 0) {
 			return 2;
@@ -226,6 +227,13 @@ int AI(int arr[]) {
 									return 6;
 								} 
 
+	if (arr[4] == 2) {
+		if (arr[0] == 1 and arr[8] == 0) return 8;
+		if (arr[8] == 1 and arr[0] == 0) return 0;
+		if (arr[2] == 1 and arr[6] == 0) return 6;
+		if (arr[6] == 1 and arr[8] == 0) return 2;
+	}
+
 	while (check == 0) {
 		temp = rand() % 9 + 1;
 		if (arr[temp] == 0) {
@@ -275,7 +283,7 @@ int Check(int arr[])  {
 	else if (arr[3] == 1 and arr[4] == 1 and arr[5] == 1) {
 		return 1;
 	}
-	else if (arr[4] == 1 and arr[5] == 1 and arr[8] == 1) {
+	else if (arr[6] == 1 and arr[7] == 1 and arr[8] == 1) {
 		return 1;
 	}
 	else if (arr[0] == 1 and arr[3] == 1 and arr[6] == 1) {
